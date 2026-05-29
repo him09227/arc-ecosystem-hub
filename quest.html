@@ -52,6 +52,9 @@ margin-top:10px;
 
 <p id="percent">0% Complete</p>
 
+<p id="xp">XP: 0</p>
+<p id="level">Level: 1</p>
+
 </div>
 
 <a href="index.html">⬅ Back Home</a>
@@ -75,6 +78,12 @@ let progress=(checked/tasks.length)*100;
 
 bar.style.width=progress+"%";
 percent.innerText=Math.round(progress)+"% Complete";
+
+let xp=checked*100;
+document.getElementById("xp").innerText="XP: "+xp;
+
+let level=Math.floor(xp/300)+1;
+document.getElementById("level").innerText="Level: "+level;
 }
 </script>
 
