@@ -85,6 +85,22 @@ document.getElementById("xp").innerText="XP: "+xp;
 let level=Math.floor(xp/300)+1;
 document.getElementById("level").innerText="Level: "+level;
 }
+tasks.forEach((task,index)=>{
+
+task.checked=localStorage.getItem("task"+index)==="true";
+
+task.addEventListener("change",()=>{
+
+localStorage.setItem("task"+index,task.checked);
+
+update();
+
+});
+
+});
+
+update();
+  
 </script>
 
 </body>
