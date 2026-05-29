@@ -36,6 +36,10 @@ margin-top:10px;
 
 <h1>🏆 ARC Quest Tracker</h1>
 
+<button onclick="connectWallet()">🔗 Connect Wallet</button>
+
+<p id="wallet">Wallet: Not Connected</p>
+
 <div class="card">
 
 <p><input type="checkbox" class="task"> Faucet Claimed</p>
@@ -60,6 +64,35 @@ margin-top:10px;
 <a href="index.html">⬅ Back Home</a>
 
 <script>
+  
+async function connectWallet(){
+
+if(typeof window.ethereum !== "undefined"){
+
+try{
+
+const accounts = await ethereum.request({
+method:"eth_requestAccounts"
+});
+
+document.getElementById("wallet").innerText =
+"Wallet: " + accounts[0];
+
+}
+catch(err){
+
+alert("Wallet connection cancelled");
+
+}
+
+}else{
+
+alert("MetaMask not found");
+
+}
+
+}
+  
 const tasks=document.querySelectorAll(".task");
 const bar=document.getElementById("bar");
 const percent=document.getElementById("percent");
@@ -102,6 +135,16 @@ update();
 update();
   
 </script>
+  
+<div class="card">
+<h2>🔗 Wallet Connect</h2>
 
+<button onclick="connectWallet()">
+Connect MetaMask
+</button>
+
+<p id="wallet">Wallet: Not Connected</p>
+</div>
+  
 </body>
 </html>
